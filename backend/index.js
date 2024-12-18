@@ -12,7 +12,7 @@ app.use(cors());
 
 // Use CORS to allow specific domains
 const corsOptions = {
-    origin: ['https://e-commerce-mern-zeta.vercel.app','https://e-commerce-mern-frontend-eight.vercel.app'], // The front-end URL
+    origin: ['https://e-commerce-admin-beta-three.vercel.app','https://e-commerce-client-kappa-five.vercel.app'], // The front-end URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   };
