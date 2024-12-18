@@ -28,7 +28,7 @@ const AddProduct=()=>{
         let formdata = new FormData();
         formdata.append('product',image);
         
-        await fetch('https://e-commerce-mern-frontend-eight.vercel.app/upload',{
+        await fetch('https://e-commerce-mern-e9aq.onrender.com/upload',{
             method:'POST',
             headers:{
                 Accept:'application/json',
@@ -39,7 +39,7 @@ const AddProduct=()=>{
         if(responseData.success){
             product.image=responseData.image_url;
             console.log(product);
-            await fetch('https://e-commerce-mern-frontend-eight.vercel.app/addproduct',{
+            await fetch('https://e-commerce-mern-e9aq.onrender.com/addproduct',{
                 method:'POST',
                 headers:{
                     Accept:'application/json',
