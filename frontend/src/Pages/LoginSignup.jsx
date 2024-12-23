@@ -17,7 +17,7 @@ const LoginSignup = ()=>{
     const login = async ()=>{
         console.log("Login Function Executed",formData);
         let responseData;
-        await fetch('https://e-commerce-mern-frontend-eight.vercel.app/login',{
+        await fetch('https://e-commerce-client-kappa-five.vercel.app/login',{
             method:'POST',
             headers:{
                 Accept:'application/form-data',
