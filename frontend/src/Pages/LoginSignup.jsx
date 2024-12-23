@@ -24,6 +24,7 @@ const LoginSignup = ()=>{
                 'Content-Type':'application/json',
             },
             body:JSON.stringify(formData),
+            credentials: 'include',
         }).then((response)=>response.json()).then((data)=>responseData=data)
     
 
@@ -39,13 +40,14 @@ const LoginSignup = ()=>{
     const signup = async ()=>{
         console.log("Signup Function Executed",formData);
         let responseData;
-        await fetch('https://e-commerce-mern-frontend-eight.vercel.app/signup',{
+        await fetch('https://e-commerce-pvx3.onrender.com/signup',{
             method:'POST',
             headers:{
                 Accept:'application/form-data',
                 'Content-Type':'application/json',
             },
             body:JSON.stringify(formData),
+            credentials: 'include',
         }).then((response)=>response.json()).then((data)=>responseData=data)
     
 
