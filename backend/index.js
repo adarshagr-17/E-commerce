@@ -14,7 +14,8 @@ app.use(cors());
 const corsOptions = {
     origin: ['https://e-commerce-admin-beta-three.vercel.app','https://e-commerce-client-kappa-five.vercel.app'], // The front-end URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
   };
   
   app.use(cors(corsOptions));  
