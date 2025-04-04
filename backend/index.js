@@ -8,7 +8,6 @@ const path=require("path");
 const cors= require("cors");
 const port = process.env.PORT||4000;
 app.use(express.json());
-app.use(cors());
 
 // Use CORS to allow specific domains
 const corsOptions = {
@@ -43,9 +42,9 @@ const upload = multer({storage:storage})
 //Creating upload endpoint for images
 app.use('/images',express.static('upload/images'))
 
-app.post("/upload",upload.single('product'),(req,res)=>{
+app.post("/upload",upload.array('product',5),(req,res)=>{
     res.json({
-        success:1,
+        success:5,
         image_url:`${process.env.HOST_NAME}:${port}/images/${req.file.filename}`
     })
 })
