@@ -14,12 +14,12 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
     
     useEffect(()=>{
-        fetch('https://e-commerce-client-kappa-five.vercel.app/allproducts')
+        fetch('https://e-commerce-pvx3.onrender.com/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/getcart',{
+            fetch('https://e-commerce-pvx3.onrender.com/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -35,7 +35,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/addtocart',{
+            fetch('https://e-commerce-pvx3.onrender.com/addtocart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
@@ -51,7 +51,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId)=>{
         setCartItems((prev=>({...prev,[itemId]:prev[itemId]-1})))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/removefromcart',{
+            fetch('https://e-commerce-pvx3.onrender.com/removefromcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/form-data',
