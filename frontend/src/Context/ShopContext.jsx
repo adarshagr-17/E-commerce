@@ -14,54 +14,58 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
     
     useEffect(()=>{
-        fetch('https://e-commerce-client-kappa-five.vercel.app/allproducts')
+        fetch('https://e-commerce-pvx3.onrender.com/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
+        .catch(error => console.error("Error fetching products:", error));
 
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/getcart',{
+            fetch('https://e-commerce-pvx3.onrender.com/getcart',{
                 method:'POST',
                 headers:{
-                    Accept:'application/form-data',
+                    Accept:'application/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
                     'Content-Type':'application/json',
                 },
-                body:"",
+                body:JSON.stringify({}),
             }).then((response)=>response.json())
-            .then((data)=>setCartItems(data));
+            .then((data)=>setCartItems(data))
+            .catch(error => console.error("Error fetching cart:", error));
         }
     },[])
     
     const addToCart = (itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/addtocart',{
+            fetch('https://e-commerce-pvx3.onrender.com/addtocart',{
                 method:'POST',
                 headers:{
-                    Accept:'application/form-data',
+                    Accept:'application/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
                     'Content-Type':'application/json',
                 },
                 body:JSON.stringify({"itemID":itemId}),
             })
             .then((response)=>response.json())
-            .then((data)=>console.log(data));
+            .then((data)=>console.log(data))
+            .catch(error => console.error("Error adding to cart:", error));
         }
     }
     const removeFromCart = (itemId)=>{
         setCartItems((prev=>({...prev,[itemId]:prev[itemId]-1})))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-client-kappa-five.vercel.app/removefromcart',{
+            fetch('https://e-commerce-pvx3.onrender.com/removefromcart',{
                 method:'POST',
                 headers:{
-                    Accept:'application/form-data',
+                    Accept:'application/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
                     'Content-Type':'application/json',
                 },
                 body:JSON.stringify({"itemID":itemId}),
             })
             .then((response)=>response.json())
-            .then((data)=>console.log(data));
+            .then((data)=>console.log(data))
+            .catch(error => console.error("Error removing from cart:", error));
         }
     }
     const getTotalCartAmount = ()=>{
