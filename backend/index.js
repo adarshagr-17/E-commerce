@@ -166,11 +166,13 @@ app.post('/signup',async(req,res)=>{
     for(let i=0; i<300;i++){
         cart[i]=0;
     }
+    date=Date.now
     const user = new Users({
         name:req.body.name,
         email:req.body.email,
         password:req.body.password,
         cartData:cart,
+        date:date,
     })
 
     await user.save();
@@ -197,14 +199,14 @@ app.post('/login', async(req,res)=>{
                 }
             }
             const token =jwt.sign(data, process.env.JWT_SECRET_CODE);
-            res.json({success:true,token});
+            res.json({success:true,token,message:'Logged in successfully'});
         }
         else{
-            res.json({success:false,errors:"Wrong Password"});
+            res.json({success:false,errors:"Wrong Password",message:'Wrong password'});
         }
     }
     else{
-            res.json({success:false,errors:"Wrong Email Id"});
+            res.json({success:false,errors:"Wrong Email Id",message:'wrong email id'});
         }
 })
 
