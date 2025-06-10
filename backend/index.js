@@ -45,7 +45,7 @@ app.use('/images',express.static('upload/images'))
 app.post("/upload",upload.single('product'),(req,res)=>{
     res.json({
         success:1,
-        image_url:`${process.env.HOST_NAME||"localhost"}:${port}/images/${req.file.filename}`
+        image_url:`${"https://e-commerce-pvx3.onrender.com"}:${port}/images/${req.file.filename}`
     })
 })
 
