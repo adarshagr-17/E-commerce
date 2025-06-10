@@ -11,10 +11,10 @@ app.use(express.json());
 
 // Use CORS to allow specific domains
 const corsOptions = {
-    origin: ['https://e-commerce-admin-beta-three.vercel.app','https://e-commerce-client-kappa-five.vercel.app'], // The front-end URL
+    origin: ['https://e-commerce-admin-beta-three.vercel.app','https://e-commerce-client-kappa-five.vercel.app','*','http://localhost:5174','http://localhost:3000'], // The front-end URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"]
+     allowedHeaders: ["Content-Type", "Authorization", "auth-token"]
   };
   
   app.use(cors(corsOptions));  
@@ -45,7 +45,7 @@ app.use('/images',express.static('upload/images'))
 app.post("/upload",upload.single('product'),(req,res)=>{
     res.json({
         success:1,
-        image_url:`${process.env.HOST_NAME}:${port}/images/${req.file.filename}`
+        image_url:`${process.env.HOST_NAME||"localhost"}:${port}/images/${req.file.filename}`
     })
 })
 

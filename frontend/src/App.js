@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-          <Route path='/' element = {<Shop></Shop>}></Route>
+          <Route path='/' element = {<Shop/>}></Route>
           <Route path='/mens' element = {<ShopCategory banner={men_banner} category="men"></ShopCategory>}></Route>
           <Route path='/womens' element = {<ShopCategory banner={women_banner} category="women"></ShopCategory>}></Route>
           <Route path='/kids' element = {<ShopCategory banner={kid_banner} category="kid"></ShopCategory>}></Route>

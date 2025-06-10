@@ -9,7 +9,7 @@ const ListProduct=()=>{
     const fetchInfo = async ()=>{
         await fetch('https://e-commerce-pvx3.onrender.com/allproducts')
         .then((res)=>res.json())
-        .then((data)=>{setAllProducts(data)});
+        .then((data)=>{setAllProducts(data.products);console.log(data)});
     }
 
     useEffect(()=>{

@@ -8,9 +8,9 @@ const NewCollections = () =>{
     const [new_collection,setNew_collection]=useState([]);
 
     useEffect(()=>{
-        fetch('https://e-commerce-pvx3.onrender.com/newcollections')
+        fetch('http://localhost:4000/newcollection')
         .then((response)=>response.json())
-        .then((data)=>setNew_collection(data));
+        .then((data)=>{setNew_collection(data);console.log(data)});
     },[])
 
     return(

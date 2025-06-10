@@ -14,13 +14,13 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
     
     useEffect(()=>{
-        fetch('https://e-commerce-pvx3.onrender.com/allproducts')
+        fetch('http://localhost:4000/allproducts')
         .then((response)=>response.json())
-        .then((data)=>setAll_Product(data))
+        .then((data)=>setAll_Product(data.products))
         .catch(error => console.error("Error fetching products:", error));
 
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-pvx3.onrender.com/getcart',{
+            fetch('http://localhost:4000/getcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/json',
@@ -37,7 +37,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-pvx3.onrender.com/addtocart',{
+            fetch('http://localhost:4000/addtocart',{
                 method:'POST',
                 headers:{
                     Accept:'application/json',
@@ -54,7 +54,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId)=>{
         setCartItems((prev=>({...prev,[itemId]:prev[itemId]-1})))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-pvx3.onrender.com/removefromcart',{
+            fetch('http://localhost:4000/removefromcart',{
                 method:'POST',
                 headers:{
                     Accept:'application/json',
